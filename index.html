@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=tel], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<h3>User To Sheets Data</h3>
+
+<div>
+  <form method="post" name="google-sheet">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="First Name" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="Last Name" placeholder="Your last name..">
+    
+    <label for="oname">Organization Name</label>
+    <input type="text" id="oname" name="Oname" placeholder="Your Organization name..">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="Email" placeholder="Your Email">
+    
+    <label for="workphone">Work Phone</label>
+    <br>
+    <input type="tel" id="workphone" name="Work Phone" placeholder="Your Work Phone No.">
+    <br>
+    <label for="homephone">Home Phone</label>
+    <br>
+    <input type="tel" id="homephone" name="Home Phone" placeholder="Your Home Phone No.">
+    <br>
+    <label for="cellphone">Cell Phone</label>
+    <br>
+    <input type="tel" id="cellphone" name="Cell Phone" placeholder="Your Cell Phone No.">
+     <br>
+    <label for="fax">Fax</label>
+    <input type="text" id="fax" name="Fax" placeholder="Your Fax No.">
+    
+    <label for="address1">Address1</label>
+    <input type="text" id="address1" name="Address1" placeholder="Your Address">
+
+    <label for="address2">Address2</label>
+    <input type="text" id="address2" name="Address2" placeholder="Your Address">
+    
+    <label for="City">City</label>
+    <input type="text" id="city" name="City" placeholder="Your City">
+
+    <label for="stateprovince">State/Province</label>
+    <input type="text" id="stateprovince" name="State" placeholder="Your State">
+
+    <label for="zip">Zip/Postal Code</label>
+    <input type="text" id="zip" name="Zip" placeholder="Your Zip Code">
+
+
+
+    <!-- <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select> -->
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9ECR1pqDBuZZGAvceZOtECABzuNNJXYcKHc5aIvIvCPCz4C-gsjH4FM-ESQEQ0DY4/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
+
+
